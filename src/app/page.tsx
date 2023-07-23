@@ -117,7 +117,7 @@ export default function Home() {
                 }}
               />
               <Typography component="h1" variant="h5">
-                Hadap Tutoring Sign In
+                StudyBuddy Sign In
               </Typography>
               <Box component="form" noValidate sx={{ mt: 1 }}>
                 <TextField

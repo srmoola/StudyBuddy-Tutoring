@@ -14,7 +14,7 @@ const LoadingDialog = ({ usermessage }: Props) => {
   return (
     <>
       <DialogTitle id="loading-dialog-title">
-        Hadap is Processing {usermessage} Request
+        StudyBuddy is Processing your Request
       </DialogTitle>
       <DialogContent>
         <DialogContentText>

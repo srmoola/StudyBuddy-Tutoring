@@ -21,8 +21,6 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Skeleton,
-  Typography,
 } from "@mui/material";
 import { useAtom } from "jotai";
 import { redirect } from "next/navigation";
@@ -32,6 +30,57 @@ import { query, orderBy, onSnapshot, collection } from "firebase/firestore";
 import Titles from "@/components/Titles";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import SidebarSkeleton from "@/components/SidebarSkeleton";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ReferenceLine,
+  ResponsiveContainer,
+} from "recharts";
+
+const data = [
+  {
+    name: "Sun",
+    Lessons: 3,
+    Quizzes: 2,
+    amt: 2400,
+  },
+  {
+    name: "Mon",
+    Lessons: 6,
+    Quizzes: 4,
+    amt: 2210,
+  },
+  {
+    name: "Tue",
+    Lessons: 3,
+    Quizzes: 3,
+    amt: 2290,
+  },
+  {
+    name: "Thurs",
+    Lessons: 4,
+    Quizzes: 1,
+    amt: 2000,
+  },
+  {
+    name: "Fri",
+    Lessons: 5,
+    Quizzes: 3,
+    amt: 2181,
+  },
+  {
+    name: "Sat",
+    Lessons: 5,
+    Quizzes: 2,
+    amt: 2100,
+  },
+];
 
 const lessonListRef = collection(firestore, "Lessons");
 const quizListRef = collection(firestore, "Quizzes");
@@ -274,8 +323,30 @@ const Hadap = () => {
                 </Box>
               </Grid>
               <Grid item md={8} xs={12}>
-                <Box className="bg-white h-96 rounded-lg">
-                  <Titles title="Quizzes" />
+                <Box className="bg-white h-100 rounded-lg">
+                  <Titles title="Progress" />
+                  <ResponsiveContainer width="90%" aspect={2}>
+                    <BarChart
+                      width={500}
+                      height={300}
+                      data={data}
+                      margin={{
+                        top: 20,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <ReferenceLine y={6} stroke="red" strokeDasharray="4 4" />
+                      <Bar dataKey="Lessons" stackId="a" fill="#8884d8" />
+                      <Bar dataKey="Quizzes" stackId="a" fill="#82ca9d" />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </Box>
               </Grid>
             </Grid>

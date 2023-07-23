@@ -169,7 +169,7 @@ export default function NavbarDrawer() {
             noWrap
             component="div"
           >
-            Hadap Tutoring
+            StudyBuddy
           </Typography>
 
           <Avatar
