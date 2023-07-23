@@ -131,8 +131,7 @@ const Create = () => {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization:
-          "Bearer " + "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",
+        Authorization: "Bearer " + process.env.NEXT_PUBLIC_OPENAI,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(apiRequestBody),
